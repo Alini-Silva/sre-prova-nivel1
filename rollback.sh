@@ -17,7 +17,7 @@ fi
 
 # 3. Inicia a versão anterior
 echo "2. Restaurando versão anterior..."
-docker run -d -p 8080:8080 --name minha-app sre-app:previous
+docker run -d -p 8001:8001 --name minha-app sre-app:previous
 
 # 4. Aguarda inicialização
 echo "3. Aguardando aplicação iniciar..."
@@ -25,7 +25,7 @@ sleep 5
 
 # 5. Testa
 echo "4. Testando aplicação..."
-if curl -sf http://localhost:8080/health > /dev/null; then
+if curl -sf http://localhost:8001/health > /dev/null; then
     echo "✅ Rollback concluído com sucesso!"
 else
     echo "❌ Rollback falhou!"

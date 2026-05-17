@@ -27,7 +27,7 @@ docker tag sre-app:$VERSION sre-app:previous || true
 
 # 4. Inicia o novo container
 echo "4. Iniciando nova versão..."
-docker run -d -p 8080:8080 --name minha-app \
+docker run -d -p 8001:8001 --name minha-app \
     -e APP_VERSION=$VERSION \
     sre-app:$VERSION
 
@@ -38,7 +38,7 @@ sleep 5
 # 6. Testa o health check
 echo "6. Testando health check..."
 for i in {1..5}; do
-    if curl -sf http://localhost:8080/health > /dev/null; then
+    if curl -sf http://localhost:8001/health > /dev/null; then
         echo "✅ Deploy concluído com sucesso!"
         echo "Versão $VERSION está rodando"
         exit 0
