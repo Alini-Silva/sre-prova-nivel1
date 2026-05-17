@@ -1,0 +1,20 @@
+# Docker
+docker build -t nome:versao .          # Construir imagem
+docker run -p 8080:8080 nome:versao   # Executar container
+docker ps                              # Listar containers rodando
+docker logs container_name             # Ver logs
+docker stop container_name             # Parar container
+docker rm container_name               # Remover container
+
+# Testes
+pytest -v                              # Rodar testes com detalhes
+pytest tests/test_app.py              # Rodar teste específico
+
+# Monitoramento
+curl http://localhost:8080/health     # Testar health
+curl http://localhost:8080/metrics    # Ver métricas
+./monitor.sh                          # Rodar monitor completo
+
+# Deploy
+./deploy.sh 1.0.0                     # Fazer deploy
+./rollback.sh                         # Fazer rollback
